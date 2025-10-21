@@ -1,16 +1,16 @@
 package com.example.demo.dtos;
-import com.example.demo.models.UserModel;
+import com.example.demo.models.UsuarioModel;
 
-public class UserDTO {
+public class UsuarioDTO {
     private Integer id;
     private String nome;
     private String email;
     private String tipo;
 
-    public UserDTO() {
+    public UsuarioDTO() {
     }
 
-    public UserDTO(Integer id, String nome, String email, String tipo) {
+    public UsuarioDTO(Integer id, String nome, String email, String tipo) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -49,7 +49,7 @@ public class UserDTO {
         this.tipo = tipo;
     }
 
-    public UserDTO(UserModel userModel) {
+    public UsuarioDTO(UsuarioModel userModel) {
         this.id = userModel.getId();
         this.nome = userModel.getNome();
         this.email = userModel.getEmail();

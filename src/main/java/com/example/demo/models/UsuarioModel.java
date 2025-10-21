@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "usuarios")
-public class UserModel implements Serializable{
+public class UsuarioModel implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -21,10 +21,10 @@ public class UserModel implements Serializable{
     private String senha;
     private String tipo;
 
-    public UserModel() {
+    public UsuarioModel() {
     }
 
-    public UserModel(Integer id, String nome, String email, String senha, String tipo) {
+    public UsuarioModel(Integer id, String nome, String email, String senha, String tipo) {
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -89,7 +89,7 @@ public class UserModel implements Serializable{
             return false;
         if (getClass() != obj.getClass())
             return false;
-        UserModel other = (UserModel) obj;
+        UsuarioModel other = (UsuarioModel) obj;
         if (id == null) {
             if (other.id != null)
                 return false;

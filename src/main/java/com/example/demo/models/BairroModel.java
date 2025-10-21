@@ -19,19 +19,17 @@ public class BairroModel implements Serializable{
     private String nome;
     private String cidade;
     private String estado;
-    private String cepInicial;
-    private String cepFinal;
+    private String cep;
 
     public BairroModel() {
     }
 
-    public BairroModel(Integer id, String nome, String cidade, String estado, String cepInicial, String cepFinal) {
+    public BairroModel(Integer id, String nome, String cidade, String estado, String cep) {
         this.id = id;
         this.nome = nome;
         this.cidade = cidade;
         this.estado = estado;       
-        this.cepInicial = cepInicial;
-        this.cepFinal = cepFinal;
+        this.cep = cep;
     }
 
     public Integer getId() {
@@ -66,20 +64,12 @@ public class BairroModel implements Serializable{
         this.estado = estado;
     }
 
-    public String getcepInicial() {
-        return cepInicial;
+    public String getCep() {
+        return cep;
     }
 
-    public void setcepInicial(String cepInicial) {
-        this.cepInicial = cepInicial;
-    }
-
-    public String getcepFinal() {
-        return cepFinal;
-    }
-
-    public void setcepFinal(String cepFinal) {
-        this.cepFinal = cepFinal;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
     @Override

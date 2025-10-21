@@ -39,7 +39,6 @@ public class ImovelModel implements Serializable{
     private String endereco;
     private String numero;
     private String complemento;
-    private String cep;
     @Column(columnDefinition = "TEXT")
     private String caracteristicas;
     private Boolean destaque;
@@ -67,9 +66,9 @@ public class ImovelModel implements Serializable{
 
     public ImovelModel(Integer id, String nome, String descricao, BigDecimal precoVenda, BigDecimal precoAluguel, String finalidade,
     String status, Integer dormitorios, Integer banheiros, Integer garagem, BigDecimal areaTotal,
-    BigDecimal areaConstruida, String endereco, String numero, String complemento, String cep,
+    BigDecimal areaConstruida, String endereco, String numero, String complemento,
     String caracteristicas, Boolean destaque, TipoImovelModel tipoImovel, BairroModel bairro,
-    UserModel usuario) {
+    UsuarioModel usuario) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -85,14 +84,12 @@ public class ImovelModel implements Serializable{
         this.endereco = endereco;
         this.numero = numero;
         this.complemento = complemento;
-        this.cep = cep;
         this.caracteristicas = caracteristicas;
         this.destaque = destaque;
         /*this.tipoImovel = tipoImovel;
         this.bairro = bairro;
         this.usuario = usuario;*/
     }
-
     
     public Integer getId() {
         return id;
@@ -197,13 +194,6 @@ public class ImovelModel implements Serializable{
     }
     public void setComplemento(String complemento) {
         this.complemento = complemento;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-    public void setCep(String cep) {
-        this.cep = cep;
     }
 
     public String getCaracteristicas() {

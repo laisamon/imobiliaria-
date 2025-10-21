@@ -3,9 +3,9 @@ package com.example.demo.controllers;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.example.demo.dtos.UserDTO;
-import com.example.demo.models.UserModel;
-import com.example.demo.services.UserService;
+import com.example.demo.dtos.UsuarioDTO;
+import com.example.demo.models.UsuarioModel;
+import com.example.demo.services.UsuarioService;
 
 import java.net.URI;
 import java.util.List;
@@ -23,36 +23,36 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@RequestMapping(value = "/users")
-public class UserController {
+@RequestMapping(value = "/usuarios")
+public class UsuarioController {
 
     @Autowired
-    private UserService service;
+    private UsuarioService service;
 
     //Buscar todos os usuários
     @GetMapping
-    public ResponseEntity<List<UserDTO>> getAll(){
+    public ResponseEntity<List<UsuarioDTO>> getAll(){
 
-        List<UserModel> listModel = service.getAll();
+        List<UsuarioModel> listModel = service.getAll();
 
-        List<UserDTO> listDto = listModel.stream().map(usuario -> new UserDTO(usuario)).collect(Collectors.toList());
+        List<UsuarioDTO> listDto = listModel.stream().map(usuario -> new UsuarioDTO(usuario)).collect(Collectors.toList());
 
         return ResponseEntity.status(HttpStatus.OK).body(listDto);
     }  
     
     //Buscar usuário pelo ID
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> get(@PathVariable int id){   
+    public ResponseEntity<UsuarioDTO> get(@PathVariable int id){   
 
-        UserModel usuarios = service.find(id);
-        UserDTO dto = new UserDTO(usuarios);
+        UsuarioModel usuarios = service.find(id);
+        UsuarioDTO dto = new UsuarioDTO(usuarios);
 
         return ResponseEntity.status(HttpStatus.OK).body(dto); 
     }
 
     //Editar usuário pelo ID
     @PutMapping("/{id}")
-    public ResponseEntity<UserModel> update(@RequestBody UserModel model, @PathVariable int id) {
+    public ResponseEntity<UsuarioModel> update(@RequestBody UsuarioModel model, @PathVariable int id) {
 
         model.setId(id);
         model = service.update(model);
@@ -70,9 +70,9 @@ public class UserController {
 
     //Criar usuário
     @PostMapping()
-    public ResponseEntity<Void> createUser(@RequestBody UserDTO dto) {
+    public ResponseEntity<Void> createUser(@RequestBody UsuarioDTO dto) {
 
-        UserModel savedUser = service.insert(dto);
+        UsuarioModel savedUser = service.insert(dto);
 
         //Converter Model para DTO
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId()).toUri();

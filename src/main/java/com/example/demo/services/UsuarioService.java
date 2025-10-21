@@ -6,35 +6,35 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dtos.UserDTO;
-import com.example.demo.models.UserModel;
-import com.example.demo.repositories.UserRepository;
+import com.example.demo.dtos.UsuarioDTO;
+import com.example.demo.models.UsuarioModel;
+import com.example.demo.repositories.UsuarioRepository;
 
 @Service
-public class UserService {
+public class UsuarioService {
 
     @Autowired
-    UserRepository repositorio;
+    UsuarioRepository repositorio;
 
     //HTTP -> Controller -> Service getAll() -> Repository -> Banco de Dados
-    public List<UserModel> getAll(){
-        List<UserModel> lista = repositorio.findAll();
+    public List<UsuarioModel> getAll(){
+        List<UsuarioModel> lista = repositorio.findAll();
         return lista;
     }
 
     //Buscar objeto pelo ID
-    public UserModel find(Integer id){
-        Optional<UserModel> model = repositorio.findById(id);
+    public UsuarioModel find(Integer id){
+        Optional<UsuarioModel> model = repositorio.findById(id);
         return model.orElse(null);
     }
     
     //Inserir objeto no banco
-    public UserModel insert(UserModel user){
+    public UsuarioModel insert(UsuarioModel user){
         return repositorio.save(user);
     }   
 
-    public UserModel insert(UserDTO dto){
-        UserModel model = new UserModel();
+    public UsuarioModel insert(UsuarioDTO dto){
+        UsuarioModel model = new UsuarioModel();
         model.setNome(dto.getNome());
         model.setEmail(dto.getEmail());
         model.setTipo(dto.getTipo());
@@ -43,7 +43,7 @@ public class UserService {
     }
 
     //Atualizar objeto no banco
-    public UserModel update(UserModel user){
+    public UsuarioModel update(UsuarioModel user){
         try {
             if(find(user.getId()) != null){
                 return repositorio.save(user);
